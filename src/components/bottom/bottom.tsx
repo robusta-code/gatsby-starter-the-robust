@@ -1,8 +1,6 @@
 import React from 'react'
 import Link from 'gatsby-link'
-//@ts-ignore
 import email from '../../images/email.png'
-//@ts-ignore
 import logo from '../../images/logo-bw.png'
 
 class BottomSection extends React.Component {

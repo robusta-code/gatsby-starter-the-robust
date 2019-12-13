@@ -1,27 +1,23 @@
 import React from 'react'
-
+import '../styles/layout.css'
 
 import Header from './header'
 import BottomSection from "./bottom/bottom";
 
-type Props = {authorImageFluid?:string, children?:React.ReactNode, pageTitle?:string, postAuthor?:string}
-const Layout = ({authorImageFluid, children, pageTitle, postAuthor}:Props) => (
-            <>
+type Props = { authorImageFluid?: string, children?: React.ReactNode, pageTitle?: string, postAuthor?: string }
+const Layout = ({authorImageFluid, children, pageTitle, postAuthor}: Props) => (
+    <>
 
-                <Header siteTitle="Gatsby The Robust"/>
-                <div className="container" id="content">
-                    <h1>{pageTitle} -ddd--</h1>
-                    <div className="row">
-                        <div className="col-md-12 col-lg-9">{children} </div>
-                        <div className="col-md-12 col-lg-3">
-                        </div>
+        <Header siteTitle="Gatsby The Robust"/>
+        <div className="container" id="content">
+            <h1>{pageTitle}</h1>
 
-                    </div>
-                </div>
-                <BottomSection/>
-            </>
+            <div>{children} </div>
+
+        </div>
+        <BottomSection/>
+    </>
 );
-
 
 
 export default Layout

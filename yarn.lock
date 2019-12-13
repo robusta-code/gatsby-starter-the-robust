@@ -396,7 +396,7 @@
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
 
-"@babel/plugin-syntax-typescript@^7.7.4":
+"@babel/plugin-syntax-typescript@^7.2.0", "@babel/plugin-syntax-typescript@^7.7.4":
   version "7.7.4"
   resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.7.4.tgz#5d037ffa10f3b25a16f32570ebbe7a8c2efa304b"
   integrity sha512-77blgY18Hud4NM1ggTA8xVT/dBENQf17OpiToSa2jSmEY3fWXD2jwrdVlO4kq5yzUTeF15WSQ6b4fByNvJcjpQ==
@@ -680,6 +680,14 @@
   integrity sha512-KQPUQ/7mqe2m0B8VecdyaW5XcQYaePyl9R7IsKd+irzj6jvbhoGnRE+M0aNkyAzI07VfUQ9266L5xMARitV3wg==
   dependencies:
     "@babel/helper-plugin-utils" "^7.0.0"
+
+"@babel/plugin-transform-typescript@7.4.5":
+  version "7.4.5"
+  resolved "https://registry.yarnpkg.com/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.4.5.tgz#ab3351ba35307b79981993536c93ff8be050ba28"
+  integrity sha512-RPB/YeGr4ZrFKNwfuQRlMf2lxoCUaU01MTw39/OFE/RiL8HDjtn68BwEPft1P7JN4akyEmjGWAMNldOV7o9V2g==
+  dependencies:
+    "@babel/helper-plugin-utils" "^7.0.0"
+    "@babel/plugin-syntax-typescript" "^7.2.0"
 
 "@babel/plugin-transform-typescript@^7.7.4":
   version "7.7.4"

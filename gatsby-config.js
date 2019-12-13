@@ -7,7 +7,7 @@ module.exports = {
     plugins: [
         /* pretty standard, maybe don't need sass plugin*/
         `gatsby-plugin-react-helmet`,
-        //'gatsby-plugin-sass',
+        'gatsby-plugin-sass',
         'gatsby-plugin-catch-links',
         'gatsby-transformer-remark',
         {
