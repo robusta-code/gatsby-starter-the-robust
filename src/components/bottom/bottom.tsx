@@ -1,53 +1,49 @@
-import React from 'react'
-import Link from 'gatsby-link'
-import email from '../../images/email.png'
-import logo from '../../images/logo-bw.png'
+import React from "react";
+import github from "../../images/github.png";
+import logo from "../../images/logo-bw.png";
+import gatsby from "../../images/gatsby.png";
+import { FlexWrapProperty } from "csstype";
 
-class BottomSection extends React.Component {
-    render() {
-        return (
-            <section className="bottom">
-                <div className="container">
-                    <div className="col-sm-12 col-md-4">
-                        <img src={logo}  alt="" className="center-block" />
-                    </div>
+export default function BottomSection() {
+  const flex = {
+    display: "flex",
+    flexWrap: "wrap" as FlexWrapProperty,
+    justifyContent: "space-between",
+    marginTop: "40px"
+  };
 
-                    <div className="col-sm-12 col-md-4">
-                        <div className="row-fluid">
-                            <div className="col-xs-4 col-sm-3">
-                                <p><strong>LINKS</strong></p>
-                            </div>
-                            <div className="col-xs-8 col-sm-9">
-                                <ul>
-                                    <li>< Link to="/">Tutorials</Link></li>
-                                    <li>< Link to="/">Calendar</Link></li>
-                                    <li>< Link to="/">Training</Link></li>
-                                    <li>< Link to="/">Java</Link></li>
-                                    <li>< Link to="/">Javascript</Link></li>
-                                    <li>< Link to="/">Serverless</Link></li>
+  const flexCenter = {
+    ...flex,
+    justifyContent: "center"
+  };
 
-                                </ul></div>
-                        </div>
-                    </div>
+  return (
+    <footer>
+      <div style={flexCenter}>
+        <img src={gatsby} alt={"Gatsby CMS"} />
+        <div style={{ margin: "14px" }}>
+          Made thanks to the{" "}
+          <a href="https://github.com/robusta-code/gatsby-the-robust">
+            Gatsby the Robust
+          </a>{" "}
+          starter kit
+        </div>
+      </div>
+      <div style={flex}>
+        <a href="https://www.robusta.io">
+          <img src={logo} alt="Robusta Code" className="center-block" />
+        </a>
 
-                    <div className="col-sm-12 col-md-4">
-                        <div className="row-fluid">
-                            <div className="col-xs-4 col-sm-3">
-                                <p><strong>CONTACT</strong></p>
-                            </div>
-                            <div className="col-xs-8 col-sm-9">
-                                <p>
-                                    <img  src={email} alt="" />
-                                    <a href="mailto:nz@robusta.io">nz@robusta.io</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-        )
-    }
+        <div>
+          <a
+            href="https://github.com/nicolas-zozol/"
+            title="Github Nicolas Zozol"
+          >
+            Github :{" "}
+            <img src={github} alt="Github Open Source by Nicolas Zozol" />
+          </a>
+        </div>
+      </div>
+    </footer>
+  );
 }
-
-export default BottomSection
