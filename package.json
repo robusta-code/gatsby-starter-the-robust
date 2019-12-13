@@ -21,14 +21,9 @@
     "gatsby-source-filesystem": "^2.1.40",
     "gatsby-transformer-remark": "^2.6.39",
     "gatsby-transformer-sharp": "^2.3.6",
-    "lodash": "4.17.11",
     "node-sass": "4.12.0",
-    "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^5.2.1",
-    "react-icons": "^3.8.0",
-    "reactstrap": "8.0.0",
     "typescript": "^3.7.3"
   },
   "keywords": [
@@ -39,7 +34,7 @@
     "build": "gatsby build && npm run prod",
     "develop": "gatsby develop",
     "start": "npm run develop",
-    "format": "prettier --write \"src/**/*.js\"",
+    "format": "prettier --parser typescript --write \"src/**/*.ts\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
     "prod": "cp -R public/* ../gh-pages"
   },
