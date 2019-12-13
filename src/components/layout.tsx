@@ -11,6 +11,7 @@ const Layout = ({authorImageFluid, children, pageTitle, postAuthor}: Props) => (
         <Header siteTitle="Gatsby The Robust"/>
         <div className="container" id="content">
             <h1>{pageTitle}</h1>
+            { postAuthor && <h3>by {postAuthor}</h3>}
 
             <div>{children} </div>
 

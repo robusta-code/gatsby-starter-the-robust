@@ -1,7 +1,5 @@
 const queryPosts = require("./src/robust-api/posts-query").queryPosts;
 
-const findAuthor  = require("./src/util/authors").findAuthor;
-
 const path = require('path')
 const {slugify} = require('./src/util/utilityFunctions')
 
@@ -30,58 +28,32 @@ exports.createPages = async ({actions, graphql}) => {
 
     // Page templates
     const templates = {
-        //post: path.resolve('src/templates/single-post.js'),
+        post: path.resolve('src/templates/single-post.js'),
         blogRoll: path.resolve('src/templates/BlogRoll.js')
     }
 
-    console.log({blogRoll:templates.blogRoll});
-    const res = await graphql(`
-    {
-      allMarkdownRemark(filter:{frontmatter:{published:{ne:false}}}) {
-        edges {
-          node {
-            frontmatter {
-              author
-              tags
-              category
-            }
-            fields {
-              slug
-            }
-          }
-        }
-      }
-    }
-  `)
-
-    if (res.errors) return Promise.reject(res.errors)
-
-    // Extracting all posts from res
-    let posts = res.data.allMarkdownRemark.edges;
 
 
-    const qPosts = await queryPosts(graphql)
-
-    console.log({posts, qPosts});
+    const posts = await queryPosts(graphql)
 
 
     // Create single post pages
-   /* posts.forEach(({node}) => {
-        createPage({
-            path: node.frontmatter.category + '/' + node.fields.slug,
+    posts.forEach(post => {
+        const postObject ={
+            path: post.frontmatter.category + '/' + post.fields.slug,
             component: templates.post,
             context: {
                 // Passing slug for template to use to fetch the post
-                slug: node.fields.slug,
-                // Find author imageUrl from author array and pass it to template
-                imageUrl: findAuthor(node.frontmatter.author).imageUrl,
-            },
-        })
-    })
-*/
+                slug: post.fields.slug,
+                post
+            }
+        };
+        createPage(postObject)
+    });
+
     // Create posts pagination pages
-    const postsPerPage = config.blogRollSize
-    const numberOfPages = Math.ceil(posts.length / postsPerPage)
+    const postsPerPage = config.blogRollSize;
+    const numberOfPages = Math.ceil(posts.length / postsPerPage);
 
 
 
@@ -89,11 +61,10 @@ exports.createPages = async ({actions, graphql}) => {
     // skipping first page, with index === 0
     for (let index = 0; index < numberOfPages; index++) {
         const currentPage = index+1;
-        const skip = postsPerPage*index
-        const blogRoll = await queryBlogRoll(graphql, skip, postsPerPage)
+        const skip = postsPerPage*index;
+        const blogRoll = posts.slice(skip, skip+postsPerPage);
 
         const path = index === 0 ? '/blog' : `/blog/page/${currentPage}`;
-        console.log({index, skip, blogRoll });
 
         createPage({
             path,
@@ -104,7 +75,7 @@ exports.createPages = async ({actions, graphql}) => {
                 skip: index * postsPerPage,
                 numberOfPages,
                 currentPage,
-                posts:blogRoll.data.allMarkdownRemark.edges
+                posts:blogRoll
             },
         })
     }

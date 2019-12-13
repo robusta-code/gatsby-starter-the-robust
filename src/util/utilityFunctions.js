@@ -1,4 +1,6 @@
-const slugify = function (text) {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.slugify = function (text) {
     return text
         .toString()
         .toLowerCase()
@@ -9,9 +11,9 @@ const slugify = function (text) {
         .replace(/-+$/, ''); // Trim - from end of text
 };
 // Web Design => web-design
-function createLink(node) {
-    const category = node.frontmatter.category || 'web';
-    return '/' + category + '/' + node.fields.slug;
+function createLink(post) {
+    const category = post.frontmatter.category || 'web';
+    return '/' + category + '/' + post.fields.slug;
 }
-module.exports = { slugify, createLink };
+exports.createLink = createLink;
 //# sourceMappingURL=utilityFunctions.js.map

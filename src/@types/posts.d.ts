@@ -1,10 +1,14 @@
+export type Html = string
+export type AuthorName = string
+
 export interface Post {
     id: string
+    html: Html
     frontmatter: {
         category: string
         title: string
         date: string
-        author: string
+        author: AuthorName
         tags: string[]
         image: GastbyImage
     }
@@ -20,7 +24,7 @@ export interface GastbyImage {
         fluid: {
             src: string
             srcSet: string
-            aspectRatio: string
+            aspectRatio: number
             sizes: string
             base64: string
         }

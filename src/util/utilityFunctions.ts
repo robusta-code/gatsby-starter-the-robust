@@ -1,4 +1,6 @@
-const slugify = function(text) {
+import {Post} from "../@types/posts";
+
+export const slugify = function(text:string) {
   return text
     .toString()
     .toLowerCase()
@@ -12,11 +14,9 @@ const slugify = function(text) {
 // Web Design => web-design
 
 
-function createLink(node){
-  const category = node.frontmatter.category || 'web';
-  return '/'+category+'/'+node.fields.slug;
+export function createLink(post:Post){
+  const category = post.frontmatter.category || 'web';
+  return '/'+category+'/'+post.fields.slug;
 }
-
-module.exports = { slugify, createLink }
 
 

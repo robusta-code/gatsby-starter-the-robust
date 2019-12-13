@@ -61,6 +61,17 @@ Image section in [What I wished I knew before starting Gatsby]()
 
 
 
+### Trouble shooting
+
+Check the render method of `HotExportedComponent`. Expected a string  or a class/function but got: object.
+
+
+Check you return a default value for the component
+
+in src/templates/blog-roll.tsx:
+
+    export const BlogRoll = (props:any) => {}
+    export default BlogRoll;
 
 ## Gotchas
 
