@@ -1,27 +1,33 @@
-exports.queryBlogRoll = function (graphql, skip, limit) {
-    return graphql(blogRollQuery, {skip, limit})
+import {Post} from "../@types/posts";
+import {AllMarkdownRemarks, Edge, graphQlHandler} from "../@types/graphql";
+
+export async function queryPosts (graphql:graphQlHandler<AllMarkdownRemarks>):Promise<Array<Post>> {
+    return graphql(blogRollQuery, {skip:0})
+        .then(all => {
+            console.log(all.data, all.data.allMarkdownRemark.edges);
+            return all.data.allMarkdownRemark.edges
+        })
+        .then (edges =>edges.map( (edge :Edge)=> edge.node))
 }
 
 const blogRollQuery = `
-  query BlogRollQuery($skip: Int!, $limit: Int!) {
+  query BlogRollQuery($skip: Int!) {
     allMarkdownRemark(
+        skip: $skip
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: $limit
-      skip: $skip
-      filter:{frontmatter:{published:{ne:false}}}
     ) {
       edges {
         node {
           id
-          frontmatter {
+          frontmatter {            
             category
             title
             date(formatString: "MMMM Do YYYY")
             author
             tags
             image {
-            absolutePath
-              childImageSharp {
+                absolutePath
+                childImageSharp {
                   original{
                     src
                   }

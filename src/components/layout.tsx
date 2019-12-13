@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/layout.css'
+import './styles/layout.css'
 
 import Header from './header'
 import BottomSection from "./bottom/bottom";

@@ -1,3 +1,5 @@
+const queryPosts = require("./src/robust-api/posts-query").queryPosts;
+
 const findAuthor  = require("./src/util/authors").findAuthor;
 
 const path = require('path')
@@ -5,7 +7,7 @@ const {slugify} = require('./src/util/utilityFunctions')
 
 const _ = require('lodash')
 
-const queryBlogRoll = require('./src/graphql/blog-roll-query').queryBlogRoll
+const queryBlogRoll = require('./src/robust-api/blog-roll-query').queryBlogRoll
 
 const config = {
     blogRollSize:4
@@ -56,6 +58,11 @@ exports.createPages = async ({actions, graphql}) => {
 
     // Extracting all posts from res
     let posts = res.data.allMarkdownRemark.edges;
+
+
+    const qPosts = await queryPosts(graphql)
+
+    console.log({posts, qPosts});
 
 
     // Create single post pages

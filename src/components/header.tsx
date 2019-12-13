@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 import React from "react"
-import '../styles/home.scss'
+import './styles/home.scss'
 
 const Header = () => (
     <header
