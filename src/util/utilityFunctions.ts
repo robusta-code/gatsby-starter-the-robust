@@ -1,22 +1,19 @@
-import {Post} from "../@types/posts";
+import { Post } from "../@types/posts";
 
-export const slugify = function(text:string) {
+export const slugify = function(text: string) {
   return text
     .toString()
     .toLowerCase()
-    .replace(/\s+/g, '-') // Replace spaces with -
-    .replace(/[^\w-]+/g, '') // Remove all non-word chars
-    .replace(/--+/g, '-') // Replace multiple - with single -
-    .replace(/^-+/, '') // Trim - from start of text
-    .replace(/-+$/, '') // Trim - from end of text
-}
+    .replace(/\s+/g, "-") // Replace spaces with -
+    .replace(/[^\w-]+/g, "") // Remove all non-word chars
+    .replace(/--+/g, "-") // Replace multiple - with single -
+    .replace(/^-+/, "") // Trim - from start of text
+    .replace(/-+$/, ""); // Trim - from end of text
+};
 
 // Web Design => web-design
 
-
-export function createLink(post:Post){
-  const category = post.frontmatter.category || 'web';
-  return '/'+category+'/'+post.fields.slug;
+export function createLink(post: Post) {
+  const category = post.frontmatter.category || "web";
+  return "/" + category + "/" + post.fields.slug;
 }
-
-

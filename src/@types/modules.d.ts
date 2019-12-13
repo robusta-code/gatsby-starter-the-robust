@@ -1,5 +1,5 @@
-declare module '*.jpg';
-declare module "*.png"
+declare module "*.jpg";
+declare module "*.png";
 
 /**
  * Warning : don't export anything here : https://stackoverflow.com/a/59282975/968988

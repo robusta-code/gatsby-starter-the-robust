@@ -1,12 +1,14 @@
-import {Post} from "../@types/posts";
-import {AllMarkdownRemarks, Edge, graphQlHandler} from "../@types/graphql";
+import { Post } from "../@types/posts";
+import { AllMarkdownRemarks, Edge, graphQlHandler } from "../@types/graphql";
 
-export async function queryPosts (graphql:graphQlHandler<AllMarkdownRemarks>):Promise<Array<Post>> {
-    return graphql(blogRollQuery, {skip:0})
-        .then(all => {
-            return all.data.allMarkdownRemark.edges
-        })
-        .then (edges =>edges.map( (edge :Edge)=> edge.node))
+export async function queryPosts(
+  graphql: graphQlHandler<AllMarkdownRemarks>
+): Promise<Array<Post>> {
+  return graphql(blogRollQuery, { skip: 0 })
+    .then(all => {
+      return all.data.allMarkdownRemark.edges;
+    })
+    .then(edges => edges.map((edge: Edge) => edge.node));
 }
 
 const blogRollQuery = `
@@ -49,4 +51,4 @@ const blogRollQuery = `
       }
     }
   }
-`
+`;
