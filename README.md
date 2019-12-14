@@ -16,7 +16,9 @@ Robust starter for Gatsby 2 : Use TS objects as source for React props, and don'
 ## Queries
 
 * Posts : allMarkdownPost
-* Images : file{
+* Images : 
+
+        file{
             relativePath = *.jpg, *.png, *.jpeg, *.gif
             childImageSharp{   // aka GatsbyImageSharpFluid
                 src
@@ -24,15 +26,15 @@ Robust starter for Gatsby 2 : Use TS objects as source for React props, and don'
                 base64
                 aspectRatio
                 sizes
-            }
-            
+            }    
         }
 
 
-// a voir comment l'utiliser
+<!-- a voir comment l'utiliser
 allFile(filter: extension :regex ="/(jpg|jpeg|)/"){
     relativeDirectory = "/components/images"
 }
+-->
 
 ## Images
 
