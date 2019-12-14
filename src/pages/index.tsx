@@ -9,8 +9,16 @@ export default function() {
         <p>Welcome to Gatsby the Robust</p>
 
         <p>
-          Here is the famous <Link to="/blog">Blog Roll</Link>
+          Here is the <Link to="/blog">curated Blog Roll</Link> listing some
+          wonderful code project written in Toulouse, France
         </p>
+
+        <p>
+          Toulouse is mostly known for being home of Airbus and its Chocolatine
+          pastry, but hold also some awesome tech folks, full of creativity
+        </p>
+
+        <p>This will be shown to you, with Gatsby the Robust in action</p>
       </section>
     </Layout>
   );
