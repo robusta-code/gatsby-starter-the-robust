@@ -40,7 +40,7 @@ From Gatsby images doc:
 
 > This isn’t ideal. Optimized images should be easy and the default.
 
-I'm not totally agree with **the default**. There are major shortcoming
+I don't quite agree with **the default**. There are major shortcoming
 
 * Theory: STU**P**ID principles : P for Prematured Optimization
 * CSS : it's really **HARD** to change the css of the Gatsby Images
