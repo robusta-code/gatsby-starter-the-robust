@@ -5,7 +5,8 @@ lang: "en"
 date: "2019-09-24"
 image: ./images/ice-scrum-logo.png
 category: opensource
-published: true
+published: true 
+author: Robusta Code
 ---
 
 Ice Scrum is a leading open source product for creating a nice Scrum life in your team

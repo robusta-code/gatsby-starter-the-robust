@@ -5,7 +5,7 @@ const { slugify } = require("./src/util/utilityFunctions");
 
 const _ = require("lodash");
 
-const queryBlogRoll = require("./src/robust-api/blog-roll-query").queryBlogRoll;
+//const queryBlogRoll = require("./src/robust-api/blog-roll-query").queryBlogRoll;
 
 const config = {
   blogRollSize: 4
@@ -29,7 +29,7 @@ exports.createPages = async ({ actions, graphql }) => {
   // Page templates
   const templates = {
     post: path.resolve("src/templates/single-post.js"),
-    blogRoll: path.resolve("src/templates/BlogRoll.js")
+    blogRoll: path.resolve("src/templates/post-roll.js")
   };
 
   const posts = await queryPosts(graphql);
