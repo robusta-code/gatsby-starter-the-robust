@@ -6,6 +6,7 @@ date: "2019-12-09"
 image: ./images/fc-logo.png
 category: product
 published: true
+author: Nicolas Zozol
 ---
 
 Front commerce helps you to code E-Commerce solid sites

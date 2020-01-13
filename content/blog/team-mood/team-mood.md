@@ -1,5 +1,5 @@
 ---
-title: "JWT or OAuth ?"
+title: "Team Mood"
 tags: ["agile", "product"]
 lang: "en"
 date: "2019-05-24"

@@ -25,7 +25,6 @@ const blogRollQuery = `
             category
             title
             date(formatString: "MMMM Do YYYY")
-            author
             tags
             image {
                 absolutePath

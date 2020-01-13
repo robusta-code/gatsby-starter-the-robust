@@ -23,14 +23,17 @@ export default function BottomSection() {
         <img src={gatsby} alt={"Gatsby CMS"} />
         <div style={{ margin: "14px" }}>
           Made thanks to the{" "}
-          <a href="https://github.com/robusta-code/gatsby-the-robust">
+          <a
+            href="https://github.com/robusta-code/gatsby-the-robust"
+            rel="nofollow"
+          >
             Gatsby the Robust
           </a>{" "}
           starter kit
         </div>
       </div>
       <div style={flex}>
-        <a href="https://www.robusta.io">
+        <a href="https://www.robusta.io" rel="nofollow">
           <img src={logo} alt="Robusta Code" className="center-block" />
         </a>
 
@@ -38,6 +41,7 @@ export default function BottomSection() {
           <a
             href="https://github.com/nicolas-zozol/"
             title="Github Nicolas Zozol"
+            rel="nofollow"
           >
             Github :{" "}
             <img src={github} alt="Github Open Source by Nicolas Zozol" />
