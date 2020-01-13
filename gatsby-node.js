@@ -1,4 +1,4 @@
-const queryPosts = require("./src/robust-api/posts-query").queryPosts;
+const queryPosts = require("./src/robust-api/all-posts-query").queryPosts;
 
 const path = require("path");
 const { slugify } = require("./src/util/utilityFunctions");
@@ -32,7 +32,7 @@ exports.createPages = async ({ actions, graphql }) => {
     blogRoll: path.resolve("src/templates/post-roll.js")
   };
 
-  const posts = await queryPosts(graphql);
+  let posts = await queryPosts(graphql);
 
   // Create single post pages
   posts.forEach(post => {
@@ -52,11 +52,14 @@ exports.createPages = async ({ actions, graphql }) => {
   const postsPerPage = config.blogRollSize;
   const numberOfPages = Math.ceil(posts.length / postsPerPage);
 
+  // Create excerpt
+  posts = posts.map(p => ({ ...p, excerpt: findExcerpt(p) }));
+
   // skipping first page, with index === 0
   for (let index = 0; index < numberOfPages; index++) {
     const currentPage = index + 1;
     const skip = postsPerPage * index;
-    const blogRoll = posts.slice(skip, skip + postsPerPage);
+    const postsInPage = posts.slice(skip, skip + postsPerPage);
 
     const path = index === 0 ? "/blog" : `/blog/page/${currentPage}`;
 
@@ -69,7 +72,7 @@ exports.createPages = async ({ actions, graphql }) => {
         skip: index * postsPerPage,
         numberOfPages,
         currentPage,
-        posts: blogRoll
+        posts: postsInPage
       }
     });
   }
@@ -77,27 +80,27 @@ exports.createPages = async ({ actions, graphql }) => {
   // Get all tags
   const { tags, tagPostCounts } = findTags(posts);
   /*
-    // Tags page (all tags)
-    createPage({
-        path: '/tags',
-        component: templates.tagsPage,
-        context: {
-            tags,
-            tagPostCounts,
-        },
-    })
-
-    // Tag posts pages
-    tags.forEach(tag => {
-        createPage({
-            path: `/tags/${_.kebabCase(tag)}`,
-            component: templates.tag,
-            context: {
-                tag,
-            },
-        })
-    })
-*/
+      // Tags page (all tags)
+      createPage({
+          path: '/tags',
+          component: templates.tagsPage,
+          context: {
+              tags,
+              tagPostCounts,
+          },
+      })
+  
+      // Tag posts pages
+      tags.forEach(tag => {
+          createPage({
+              path: `/tags/${_.kebabCase(tag)}`,
+              component: templates.tag,
+              context: {
+                  tag,
+              },
+          })
+      })
+  */
 };
 
 // Todo : externalize and optimize with a single reduce
@@ -119,4 +122,19 @@ function findTags(posts) {
   // Remove duplicates
   tags = _.uniq(tags);
   return { tags, tagPostCounts };
+}
+
+/**
+ * Encapsulated in a function because there is a bug. Might be fixed.
+ * https://github.com/gatsbyjs/gatsby/pull/14723
+ * @param node
+ * @returns {string}
+ */
+function findExcerpt(node) {
+  try {
+    const value = node.excerptAst.children[0].children[0].value;
+    return typeof value === "string" ? value : "";
+  } catch (e) {
+    return "no Excerpt";
+  }
 }

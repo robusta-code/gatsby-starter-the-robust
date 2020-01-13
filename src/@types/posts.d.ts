@@ -16,6 +16,7 @@ export interface Post {
     slug: string;
   };
   excerpt: string;
+  excerptAst: object;
 }
 
 export interface GastbyImage {

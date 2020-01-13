@@ -9,16 +9,18 @@ export const BlogRoll = (props: any) => {
 
   const { currentPage, numberOfPages, posts } = props.pageContext;
 
+  console.log(posts.map((p: Post) => ({ ex: p.excerpt, ast: p.excerptAst })));
   return (
     <Layout pageTitle={`Robusta Code Blog  - Page: ${currentPage}`}>
       {posts.map((post: Post) => (
-        <div>
+        <div className="post-summary">
           <h2>
             <Link to={post.frontmatter.category + "/" + post.fields.slug}>
               {post.frontmatter.title}
             </Link>
           </h2>
-          <h3>by Mr: {post.frontmatter.author}</h3>
+          {post.frontmatter.author && <h3>by Mr: {post.frontmatter.author}</h3>}
+          <p>{post.excerpt}</p>
         </div>
       ))}
       <PaginationLinks

@@ -44,6 +44,7 @@ const allPostsQuery = `
           slug
         }
         excerpt
+        excerptAst
       }
     }
   }
