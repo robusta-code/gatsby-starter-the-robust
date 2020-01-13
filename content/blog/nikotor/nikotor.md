@@ -6,6 +6,7 @@ date: "2020-01-10"
 image: ./images/pill.jpeg
 category: opensource
 published: true
+author: Robusta Code
 ---
 
 The pill to heal your web

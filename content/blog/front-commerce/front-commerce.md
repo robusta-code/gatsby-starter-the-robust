@@ -4,6 +4,7 @@ tags: ["product", "e-commerce"]
 lang: "en"
 date: "2019-12-09"
 image: ./images/fc-logo.png
+author: Nicolas Zozol
 category: product
 published: true
 author: Nicolas Zozol

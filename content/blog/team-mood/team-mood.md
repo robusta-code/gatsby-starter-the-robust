@@ -1,11 +1,12 @@
 ---
-title: "Team Mood"
+title: Team Mood
 tags: ["agile", "product"]
 lang: "en"
 date: "2019-05-24"
 image: ./images/logo.png
 category: product
 published: false
+author: Gatsby Fitzpatrick
 ---
 
 Mood Indicator Tool & Mood Meter Charts

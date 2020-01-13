@@ -6,6 +6,7 @@ date: "2018-05-24"
 image: ./images/masala.png
 category: privacy
 published: false
+author: Nicolas Zozol
 ---
 
 Masala Parser is a swiss knife for creating you own parser in Javascript

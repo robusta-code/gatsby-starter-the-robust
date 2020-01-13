@@ -6,6 +6,7 @@ date: "2019-05-24"
 image: ./images/locker.png
 category: privacy
 published: false
+author: Robusta Code
 ---
 
 Phenomic is a concurrent of Gatsby
